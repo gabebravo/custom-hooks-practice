@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
 import { Router, Link } from '@reach/router';
-import CustomHook1 from './CustomHook1';
-import CustomHook2 from './CustomHook2';
-import CustomHook3 from './CustomHook3';
+import TimeDelayCS from './TimeDelayCS';
+import WindowDimensionsCS from './WindowDimensionsCS';
+import FetchDataCS from './FetchDataCS';
 
 function App({ children }) {
-  const Home = () => <h1>Welcome to Custom Hooks!</h1>;
+  const Home = () => (
+    <h1 style={{ textAlign: 'center' }}>Welcome to Custom Hooks!</h1>
+  );
   const FourOFour = () => <h1>Oops! That Page Doesn't Exist</h1>;
 
   return (
@@ -17,14 +19,14 @@ function App({ children }) {
             <Link className="App-link" to="/">
               Home
             </Link>{' '}
-            <Link className="App-link" to="cs1">
-              CustomHook1
+            <Link className="App-link" to="time-delay">
+              UseWait
             </Link>{' '}
-            <Link className="App-link" to="cs2">
-              CustomHook2
+            <Link className="App-link" to="window-dim">
+              useWindowDimensions
             </Link>{' '}
-            <Link className="App-link" to="cs3">
-              CustomHook3
+            <Link className="App-link" to="fetch-data">
+              useFetch
             </Link>
           </nav>
         </header>
@@ -32,9 +34,9 @@ function App({ children }) {
       </div>
       <Router>
         <Home path="/" />
-        <CustomHook1 path="/cs1" />
-        <CustomHook2 path="/cs2" />
-        <CustomHook3 path="/cs3" />
+        <TimeDelayCS delay={3000} path="/time-delay" />
+        <WindowDimensionsCS path="/window-dim" />
+        <FetchDataCS path="/fetch-data" />
         <FourOFour default />
       </Router>
     </>
